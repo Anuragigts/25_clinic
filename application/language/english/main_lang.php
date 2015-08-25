@@ -81,7 +81,7 @@
 	$lang['clinic_start_time'] = "Clinic Start Time";
 	$lang['complete'] = "Complete";
 	$lang['compare'] = "Compare";
-	$lang['copyright'] = "&copy; 2014";
+	$lang['copyright'] = "&copy; 2015";
 	$lang['confirm_password'] = "Confirm Password";
 	$lang['consultation'] = "Consultation";
 	$lang['contact_number'] = "Contact Number";
