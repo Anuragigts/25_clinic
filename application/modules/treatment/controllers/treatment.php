@@ -7,21 +7,26 @@ class Treatment extends CI_Controller {
 		
 		$this->lang->load('main');
 		
-		$this->load->helper('form');
-		$this->load->helper('currency_helper');
-		
-		$this->load->library('form_validation');
-		
 		$this->load->model('treatment_model');
 		$this->load->model('settings/settings_model');
+                $this->load->model('menu_model');
+                
+                $this->load->helper('url');
+                $this->load->helper('form');
+                $this->load->helper('currency');
+                $this->load->helper('date');
+
+                $this->load->library('session');	
+                $this->load->library('form_validation');
     }
 	/**Treatments*/
-    public function index() {
-		if ($this->session->userdata('user_name') == '') {
+    public function index() { 
+              //  print_r($this->session->userdata('user_name'));die();
+	if ($this->session->userdata('user_name') == '') {
             redirect('login/index');
         } else {
-            $this->form_validation->set_rules('treatment', 'Treatment Name', 'trim|required|xss_clean|is_unique[treatments.treatment]');
-            $this->form_validation->set_rules('treatment_price', 'Treatment Price', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('treatment', 'Treatment Name', 'trim|required|is_unique[treatments.treatment]');
+            $this->form_validation->set_rules('treatment_price', 'Treatment Price', 'trim|required');
             $data['currency_postfix'] = $this->settings_model->get_currency_postfix();
             if ($this->form_validation->run() === FALSE) {
                 $data['treatments'] = $this->treatment_model->get_treatments();                
@@ -43,8 +48,8 @@ class Treatment extends CI_Controller {
         if ($this->session->userdata('user_name') == '') {
             redirect('login/index');
         } else {
-			$this->form_validation->set_rules('treatment', 'Treatment Name', 'trim|required|xss_clean');
-            $this->form_validation->set_rules('treatment_price', 'Treatment Price', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('treatment', 'Treatment Name', 'trim|required');
+            $this->form_validation->set_rules('treatment_price', 'Treatment Price', 'trim|required');
 			$data['currency_postfix'] = $this->settings_model->get_currency_postfix();
 			if ($this->form_validation->run() === FALSE) {
 				$data['treatment'] = $this->treatment_model->get_edit_treatment($id);

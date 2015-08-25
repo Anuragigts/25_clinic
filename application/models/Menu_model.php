@@ -14,6 +14,7 @@ class Menu_model extends CI_Model {
     }
 	public function find_version() {
 		$query = $this->db->get('version');
+              
 		return $query->row_array();  
 	}
 	public function get_menu_id($menu_name){

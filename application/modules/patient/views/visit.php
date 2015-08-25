@@ -189,7 +189,7 @@
 						<div class="col-md-12">	
 							<div class="col-md-4">	
 								<label for="visit_treatment" style="display:block;text-align:left;"><?php echo $this->lang->line('treatment');?></label>
-								<select id="treatment" class="form-control" multiple="multiple" style="width:350px;" tabindex="4" name="treatment[]">
+								<select id="treatment" class="form-control " multiple="multiple" style="width:350px;" tabindex="4" name="treatment[]">
 									<?php foreach ($treatments as $treatment) { ?>
 										<option value="<?php echo $treatment['id'] . "/" . $treatment['treatment'] . "/" . $treatment['price'] ?>"><?= $treatment['treatment']; ?></option>
 									<?php } ?>
@@ -197,6 +197,7 @@
 								<script>jQuery('#treatment').chosen();</script>
 							</div>
 						</div>
+                                               
 						<?php } ?>
 						<div class="col-md-12">	
 							<div class="col-md-4">	
@@ -319,4 +320,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> 
+<script>
+    $('.chosen-choices').addClass('form-control';)
+</script>

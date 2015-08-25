@@ -78,7 +78,7 @@ $level = $this->session->userdata('category');
             </div>
 			<div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;">
 				Welcome, <?=$user['name']; ?>
-				<a href="<?=site_url("admin/change_profile"); ?>" class="btn btn-primary square-btn-adjust">Change Profile</a>
+				<a href="<?=site_url("admin/change_profile"); ?>" class="btn btn-success square-btn-adjust">Change Profile</a>
 				<a href="<?= site_url("login/logout"); ?>" class="btn btn-danger square-btn-adjust"><?php echo $this->lang->line('log_out');?></a> 
 			</div>
         </nav>

@@ -99,7 +99,7 @@ function nearest_timeinterval($time){
 				<!----------------------------  Display Calendar ------------------------------->
 				<div class="panel panel-primary">
                     <div class="panel-heading"><?=$this->lang->line('calendar');?></div>
-                    <div class="panel-body" style="padding:0;">
+                    <div class="panel-body" >
 						<div class="calendar">
 						<?php
 							for ($i = 1; $i <= 31; $i++) {
