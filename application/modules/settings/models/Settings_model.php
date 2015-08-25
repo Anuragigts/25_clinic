@@ -144,6 +144,27 @@ class Settings_model extends CI_Model {
 		$db_array = array('ck_value' => $value);
 		$this->db->update('data', $db_array);	
 	}
+	public function get_clinics(){
+		$query = $this->db->get("clinics");
+		//echo $this->db->last_query();exit;
+        return $query->result_array();
+	}
+	public function add_clinics(){
+		$data = array(
+            'clinic_name' => $this->input->post('clinic_name')
+        );
+        $this->db->insert('clinics', $data);
+	}
+	public function get_clinics_det($uri){
+			$query=$this->db->get_where('clinics',array('clinic_id'=>$uri));
+			$va=$query->row_array();
+			return $va;
+			//print_r($row);exit;
+	}
+	public function update_clinics($uri){
+			$this->db->where("clinic_id",$uri);
+			$this->db->update("clinics",array('clinic_name'=>$this->input->post('clinic_name')));
+	} 
 }
 
 ?>

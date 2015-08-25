@@ -1,5 +1,5 @@
 <script type="text/javascript" charset="utf-8">
-    $(function() {
+    $(window).load(function(){
         $( "#bill_from_date" ).datepicker({
             dateFormat: "dd-mm-yy",
             showButtonPanel: true,
@@ -8,7 +8,7 @@
         });
     });
     
-    $(function() {
+    $(window).load(function(){
         $( "#bill_to_date" ).datepicker({
             dateFormat: "dd-mm-yy",
             showButtonPanel: true,

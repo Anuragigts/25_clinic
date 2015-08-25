@@ -17,8 +17,7 @@ body {
 
  #wrapper {
     width: 100%;
-     background-color: #1C8471; 
-       
+    background:#719043;
 }
 
 #page-wrapper {
@@ -207,7 +206,7 @@ max-width:170px;
 
 .navbar-cls-top .navbar-brand {
 	color: #fff;
-background-color: #fff;
+background: #22396D;
 width: 260px;
 text-align: center;
 height: 60px;
@@ -251,13 +250,7 @@ font-weight: 700;
 }
 .sidebar-collapse .nav > li > a {
 	color:#fff;
-	background-color: #1C8471; 
-/*        background-repeat: repeat-x;  Safari 4-5, Chrome 1-9 
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727));  Safari 5.1, Chrome 10+  
-        background: -webkit-linear-gradient(top, #003366, #1C558F);  Firefox 3.6+  
-        background: -moz-linear-gradient(top, #003366, #1C558F);  IE 10  
-        background: -ms-linear-gradient(top, #003366, #1C558F);  Opera 11.10+  
-        background: -o-linear-gradient(top, #003366, #1C558F);*/
+	background:#719043;
 	text-shadow:none;
 	
 }
@@ -270,7 +263,7 @@ font-weight: 700;
 .sidebar-collapse .nav > li > a:hover,
 .sidebar-collapse .nav > li > a:focus {
 	
-	background:#309BBE;
+	background:#88BB14;
 	outline:0;
 }
 
@@ -307,24 +300,17 @@ font-weight: 700;
 }
 .navbar-side {
 	border:none;
-	background-color: #fff;
+	background-color: #26417e;
 	
 }
 .navbar-cls-top {
-	/*background:#003366;*/
+	background:#22396D;
 	border-bottom:none;
-        background-color: #207996; 
-        background-repeat: repeat-x; /* Safari 4-5, Chrome 1-9 */
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727)); /* Safari 5.1, Chrome 10+ */ 
-        background: -webkit-linear-gradient(top, #207996, #1C6A84); /* Firefox 3.6+ */ 
-        background: -moz-linear-gradient(top, #207996, #1C6A84); /* IE 10 */ 
-        background: -ms-linear-gradient(top, #207996, #1C6A84); /* Opera 11.10+ */ 
-        background: -o-linear-gradient(top, #207996, #1C6A84);
 	
 }
 .navbar-cls-top .navbar-brand:hover {
 
-/*background: #003366;*/
+background: #26417E;
 color:#fff;
 
 }
@@ -334,7 +320,7 @@ border:0px solid black;
      
 }
 .navbar-header {
-    /*background: #A70303;*/
+    background: #A70303;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 background-color: #B40101;

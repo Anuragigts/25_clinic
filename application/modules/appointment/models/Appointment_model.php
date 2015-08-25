@@ -75,8 +75,13 @@ class Appointment_model extends CI_Model {
 		// Insert Appointment
 		$data['status'] = $status;
 		$this->db->insert('appointments', $data);
+		
 		$appointment_id = $this->db->insert_id();
-					
+		$val = array(
+				'appointment_id'	=>	$appointment_id,
+				'clinic_id'			=>	$this->input->post("clinic_id")
+		);
+		$this->db->insert('appointment_clinics', $val);
 		//Creating a Log of Appintment
 		$data2['appointment_id'] = $appointment_id;
 		$data2['change_date_time'] = date('d/m/Y H:i:s'); //Do not use Time Format
@@ -100,6 +105,13 @@ class Appointment_model extends CI_Model {
 		
 		$this->db->where('appointment_id', $appointment_id);
 		$this->db->update('appointments', $data);
+		if($this->input->post("clinic_id") != ''){
+			$val = array(
+					'clinic_id'			=>	$this->input->post("clinic_id")
+			);
+			$this->db->where('appointment_id', $appointment_id);
+			$this->db->update('appointment_clinics', $val);
+		}
 	}
 	function add_patient_appointment() {
         $data['appointment_date'] = date("Y-m-d",strtotime($this->input->post('appointment_date')));
@@ -112,18 +124,29 @@ class Appointment_model extends CI_Model {
      }
 
     function get_appointments($appointment_date,$doctor_id = NULL) {
-		$qry = "appointment_date ='$appointment_date' AND status !='NotAvailable'";
+		$qry = "a.appointment_date ='$appointment_date' AND a.status !='NotAvailable'";
 		if(isset($doctor_id)){
-			$qry .= " AND  userid='$doctor_id'";
+			$qry .= " AND  a.userid='$doctor_id'";
 		}
+		$this->db->select('a.*,d.clinic_id');
+		$this->db->from('appointments as a');
+		$this->db->join('appointment_clinics as d','d.appointment_id = a.appointment_id','left');
+		$this->db->join('clinics as c','d.clinic_id = c.clinic_id','inner');
 		$this->db->where($qry);
-		$query=$this->db->get('appointments');
+		$query=$this->db->get();//'appointments');
+		//echo $this->db->last_query();exit;
 		$appointments = $query->result_array();
 
 		return $appointments;
     }
 	function get_appointments_id($appointment_id) {
-        $query = $this->db->get_where('appointments', array('appointment_id' => $appointment_id));
+        //$query = $this->db->get_where('appointments', array('appointment_id' => $appointment_id));
+		$this->db->select('a.*,c.*');
+		$this->db->from("appointments as a");
+		$this->db->join("appointment_clinics as c",'c.appointment_id = a.appointment_id','left');
+		$this->db->where('a.appointment_id',$appointment_id);
+		$query = $this->db->get();
+		//echo $this->db->last_query();exit;
         return $query->row_array();
     }
 	

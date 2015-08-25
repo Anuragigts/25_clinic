@@ -27,7 +27,7 @@
 
 </style>
 <script type="text/javascript" charset="utf-8">
-    $(function() {
+    $(window).load(function(){
         $( "#followup_date" ).datepicker({
             dateFormat: "dd-mm-yy",
             showButtonPanel: true,
@@ -69,7 +69,7 @@ $time = explode(":", $t);
 			if ($followup!="0000-00-00"){
 				$follow_up = date('Y-m-d', strtotime($followup));    
 			}else{
-				$follow_up ="";
+				$follow_up = "";
 			}
 			?>
 			<?php echo form_open('patient/change_followup_date/' . $patient_id) ?>

@@ -209,9 +209,46 @@ class Settings extends CI_Controller {
 			$this->load->view('settings/backup',$data);
 			$this->load->view('templates/footer');
 		}
-		
-		
-		
+	}
+	public function clinics(){
+		if ($this->session->userdata('user_name') == '') {
+            redirect('login/index');
+        } 
+		else {
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('clinic_name', 'Clinic Name', 'required');
+			if($this->form_validation->run() == TRUE){
+					$this->settings_model->add_clinics();
+					$data['message']="Clinic Name added Successfully";
+			}
+			$data["view"] = $this->settings_model->get_clinics();
+			$this->load->view('templates/header');
+			$this->load->view('templates/menu');
+			$this->load->view('settings/addclinic',$data);
+			$this->load->view('templates/footer');
+		}
+	}
+	public function edit_clinic($uri){
+		if ($this->session->userdata('user_name') == '') {
+            redirect('login/index');
+        } else {
+			$this->load->helper('form');
+            $this->load->library('form_validation');
+			$this->load->view('templates/header');
+			$this->load->view('templates/menu');
+            $this->form_validation->set_rules('clinic_name', 'Clinic Name', 'required');
+			if ($this->form_validation->run() == FALSE) {
+                $data['vc'] = $this->settings_model->get_clinics_det($uri);
+				$this->load->view('settings/edit_clinic',$data);
+            } else {
+				$this->settings_model->update_clinics($uri);
+				$data['message']="User Updated Successfully";
+				$data["view"] = $this->settings_model->get_clinics();
+				$this->load->view('settings/addclinic', $data);
+            }
+			$this->load->view('templates/footer');
+        }
 	}
 }
 

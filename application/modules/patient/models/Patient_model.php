@@ -386,7 +386,6 @@ class Patient_model extends CI_Model {
     }
     public function get_bill_id($visit_id) {
         $query = $this->db->get_where('bill', array('visit_id' => $visit_id));
-       
         $row = $query->row();
         if ($row)
             return $row->bill_id;
@@ -403,7 +402,6 @@ class Patient_model extends CI_Model {
         $bill_id = $this->get_bill_id($visit_id);
         $this->db->order_by("type", "desc");
         $query = $this->db->get_where('bill_detail', array('bill_id' => $bill_id));
-       // echo $this->db->last_query(); die();
         return $query->result_array();
     }
     public function get_bill_detail_amount($bill_detail_id) {

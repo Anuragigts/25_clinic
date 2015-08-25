@@ -136,6 +136,7 @@
 		$doctor_name = $doctor['name'];
 		$doctor_id = $doctor['userid'];
 	}
+	
 	if(isset($appointment)){
 		//Edit Appointment
 		$header = $this->lang->line("edit")." ".$this->lang->line("appointment");
@@ -217,9 +218,10 @@
 					<?php $timezone = $this->settings_model->get_time_zone();
 						if (function_exists('date_default_timezone_set'))
 							date_default_timezone_set($timezone);
-						$appointment_date = date($def_dateformate,strtotime($appointment_date)); ?>
+						$appointment_date = date($def_dateformate,strtotime($appointment_date));
+						?>
 					<?php if(isset($appointment)){ ?>
-					<?php echo form_open('appointment/edit_appointment/'.$appointment['appointment_id']) ?>
+					<?php echo form_open('appointment/edit_appointment/'.$appointment_id) ?>
 					<?php }else{ ?>
 					<?php echo form_open('appointment/add/'.$year.'/'.$month.'/'.$day.'/'.$hour.'/'.$min.'/'.$status.'/'.$patient_id) ?>
 					<?php } ?>
@@ -257,6 +259,19 @@
 								}
 							?>
 							<?php echo form_dropdown('doctor_id', $doctor_detail, $selected_doctor_id,'class="form-control"'); ?>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="clinicname"><?php echo $this->lang->line('clinicname');?></label>
+							<?php 
+								$clinic_detail = array();
+								foreach ($clinic as $clinic_list){
+									$clinic_detail[$clinic_list['clinic_id']] = $clinic_list['clinic_name'];
+								}
+							?>
+							<?php echo form_dropdown('clinic_id', $clinic_detail, $selected_clinic_id,'class="form-control"'); ?>
+							
 						</div>
 					</div>
 					<div class="col-md-4">

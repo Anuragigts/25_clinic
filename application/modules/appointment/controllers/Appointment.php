@@ -90,6 +90,7 @@ class Appointment extends CI_Controller {
 				
 				//Fetch appointments for the date
                 $data['appointments'] = $this->appointment_model->get_appointments($appointment_date);
+				$data['clinics']	= $this->settings_model->get_clinics();
             }
 			//Load the view
 			$this->load->view('templates/header');
@@ -154,8 +155,10 @@ class Appointment extends CI_Controller {
 					$data['selected_doctor_id'] = $doctor_id;
 				}else{
 					$data['doctor'] = $this->admin_model->get_doctor();
+					$data['clinic']	=	$this->settings_model->get_clinics();
 				}
 				$data['selected_doctor_id'] = $doctor_id;
+				$data['selected_clinic_id']	=	$clinic_id;
 				$this->load->view('templates/header');
 				$this->load->view('templates/menu');
 				$this->load->view('form', $data);
@@ -180,6 +183,8 @@ class Appointment extends CI_Controller {
 			$this->form_validation->set_rules('start_time', 'Start Time', 'required');
 			$this->form_validation->set_rules('end_time', 'End Time', 'required');
 			$this->form_validation->set_rules('appointment_date', 'Date', 'required');
+			$data['def_dateformate'] = $this->settings_model->get_date_formate();
+			$data['def_timeformate'] = $this->settings_model->get_time_formate();
 			if ($this->form_validation->run() === FALSE){
 				$appointment = $this->appointment_model->get_appointments_id($appointment_id);
 				$data['appointment']=$appointment;
@@ -188,7 +193,9 @@ class Appointment extends CI_Controller {
 				$data['patients']=$this->patient_model->get_patient();
 				$doctor_id = $appointment['userid'];
 				$data['doctor'] = $this->admin_model->get_doctor();
+				$data['clinic']	=	$this->settings_model->get_clinics();
 				$data['selected_doctor_id'] = $doctor_id;
+				$data['selected_clinic_id']	=	$appointment['clinic_id'];
 				$this->load->view('templates/header');
 				$this->load->view('templates/menu');
 				$this->load->view('form', $data);

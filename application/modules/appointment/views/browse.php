@@ -99,7 +99,7 @@ function nearest_timeinterval($time){
 				<!----------------------------  Display Calendar ------------------------------->
 				<div class="panel panel-primary">
                     <div class="panel-heading"><?=$this->lang->line('calendar');?></div>
-                    <div class="panel-body" >
+                    <div class="panel-body" style="padding:0;">
 						<div class="calendar">
 						<?php
 							for ($i = 1; $i <= 31; $i++) {
@@ -480,7 +480,7 @@ function nearest_timeinterval($time){
 								?>
 									<div id="<?=$appointment_id;?>" start_position="<?=$start_position;?>" end_position="<?=$end_position;?>" appointment_column="<?=$appointment_column;?>"  style="display:none;" >
 										<a href='<?=$href;?>' title="<?=$appointment['title'];?>" class="btn square-btn-adjust <?=$class;?> " style="height:100%;">
-											<?= $appointment_title;?>
+											<?= $appointment_title;?> (<?= $appointment['clinic_id'];?>)
 										</a>
 									</div>
 									<script>
@@ -530,6 +530,24 @@ function nearest_timeinterval($time){
 					<span class="btn square-btn-adjust btn-grey"><?=$this->lang->line('not_available');?></span>
 				</div>
             </div>
+			<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<table class="table table-bordered table-condensed table-hover table-responsive table-striped">
+					<tr>
+						<th>Clinic Reference</th>
+						<th>Clinic Name</th>
+					</tr>
+				<?php 
+					foreach($clinics as $cl){
+						echo "<tr>";
+						echo "<td> (".$cl['clinic_id'].")</td>";
+						echo "<td>".$cl['clinic_name']."</td>";
+						echo "</tr>";
+					}
+				?>
+				</table>
+			</div>
+			</div>
 			<?php
 			echo "</div></br>";
 			?>

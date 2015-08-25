@@ -200,7 +200,7 @@ class Patient extends CI_Controller {
 				$appointment = $this->appointment_model->get_appointments_id($appointment_id);
 				$data['appointment_doctor']=$appointment['userid'];
             }
-                        $this->form_validation->set_rules('notes', 'Notes', 'required');
+            $this->form_validation->set_rules('notes', 'Notes', 'required');
 			$this->form_validation->set_rules('prescription', 'Prescription', 'required');
 			$this->form_validation->set_rules('visit_time', 'Time', 'required');
             if ($this->form_validation->run() === FALSE) {
@@ -217,7 +217,7 @@ class Patient extends CI_Controller {
 
 				if (!$this->upload->do_upload()) {
 					$error = array('error' => $this->upload->display_errors());
-					  $valim = '';
+					  $valim = $error;
 				} else {
 					$data = array('upload_data' => $this->upload->data());
 					$valim	=	$_FILES["userfile"]["name"];
@@ -458,7 +458,7 @@ class Patient extends CI_Controller {
 	public function print_receipt($visit_id) {
         if ($this->session->userdata('user_name') == '') {
             redirect('login/index/');
-        } else { 
+        } else {
 			$active_modules = $this->module_model->get_active_modules();
 			$data['active_modules'] = $active_modules;
 			
@@ -468,7 +468,6 @@ class Patient extends CI_Controller {
             //$data['medicine'] = $this->patient_model->get_medicine_total($visit_id);
             if (in_array("treatment", $active_modules)) {
 				$data['treatment_total'] = $this->patient_model->get_treatment_total($visit_id);
-                                
 			}
 			$data['item_total'] = $this->patient_model->get_item_total($visit_id);
             $bill_id = $this->patient_model->get_bill_id($visit_id);
@@ -543,7 +542,7 @@ class Patient extends CI_Controller {
 						}
 						$particular_table .= "</tr>";
 						$particular_amount = $particular_amount + $bill_detail['amount'];
-					}elseif($bill_detail['type']=='treatment'){
+					}elseif($bill_detail['type']=='item'){
 						$item_table .= "<tr >";
 						foreach($cols as $col){
 							if($col =='mrp' || $col =='amount'){
