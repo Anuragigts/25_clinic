@@ -1,0 +1,142 @@
+.view_label{
+    font-size:14px;
+    font-weight:bold;
+    width:125px;
+    display: inline-block;
+    text-align: right;
+	vertical-align:top;
+	padding:5px;
+}
+.view_detail{
+    font-size:14px;
+	display:inline-block;
+	padding:5px;
+}
+/*****************Forms******************/
+.input-group .form-control{
+	z-index:0 !important;
+}
+
+/*****************Calendar******************/
+.calendar{
+    float:left; 
+    padding:5px;
+    margin: 5px;
+}
+.calendar table{
+    border-collapse: collapse;
+    
+}
+.calendar table td,
+.calendar table th{
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.calendar table a{
+    display: inline-block;
+    background-color: #FFF;
+    color: #000;
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+.calendar table a:hover{
+    background-color: #449d44;
+	color:#fff;
+	border-color:#398439;
+}
+.calendar table td div.today a{
+	background-color: #428bca;
+	color:#fff;
+	border-color:#357ebd;
+}
+.calendar table td div.today a:hover{
+	background-color: #3071a9;
+	color:#fff;
+	border-color:#285e8e;
+}
+/*****************Appointments******************/
+.add_appointment {
+	display:block;
+    padding:0;
+	width:100%;
+	height:25px;
+	margin:0;
+	padding:5px;
+}
+
+/*****************Appointments******************/
+/*****************ToDos******************/
+.done{
+	text-decoration:line-through;
+}
+.navbar-cls-top .navbar-brand{
+	font-size:24px;
+	font-weight:normal;
+}
+canvas{
+	border:1px solid grey;
+}
+/*****************Modules******************/
+.text-muted{
+	height:100px;
+}
+.main-text{
+	font-size:20px;
+}
+.btn-grey {
+  color: #FFF;
+  background-color: #888;
+  border-color: #ccc;
+}
+.btn-grey:hover,
+.btn-grey:focus,
+.btn-grey.focus,
+.btn-grey:active,
+.btn-grey.active,
+.open > .dropdown-toggle.btn-grey {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-grey:active,
+.btn-grey.active,
+.open > .dropdown-toggle.btn-grey {
+  background-image: none;
+}
+.btn-grey.disabled,
+.btn-grey[disabled],
+fieldset[disabled] .btn-grey,
+.btn-grey.disabled:hover,
+.btn-grey[disabled]:hover,
+fieldset[disabled] .btn-grey:hover,
+.btn-grey.disabled:focus,
+.btn-grey[disabled]:focus,
+fieldset[disabled] .btn-grey:focus,
+.btn-grey.disabled.focus,
+.btn-grey[disabled].focus,
+fieldset[disabled] .btn-grey.focus,
+.btn-grey.disabled:active,
+.btn-grey[disabled]:active,
+fieldset[disabled] .btn-grey:active,
+.btn-grey.disabled.active,
+.btn-grey[disabled].active,
+fieldset[disabled] .btn-grey.active {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-grey .badge {
+  color: #fff;
+  background-color: #333;
+}
