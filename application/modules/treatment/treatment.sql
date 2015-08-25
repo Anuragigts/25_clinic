@@ -1,0 +1,3 @@
+INSERT INTO %db_prefix%modules (module_name,module_display_name,module_description,module_status) VALUES ('treatment', 'Treatments',"Manage Treatment List and their Prices", '1');
+CREATE TABLE IF NOT EXISTS %db_prefix%treatments (id int(11) NOT NULL AUTO_INCREMENT,treatment varchar(80) DEFAULT NULL,price float(11,2) DEFAULT NULL,PRIMARY KEY (id),UNIQUE KEY treatment (treatment));
+INSERT INTO %db_prefix%navigation_menu (menu_name,parent_name,menu_order,menu_url,menu_icon,menu_text,required_module) VALUES ('treatment', '', 800,'treatment/index', 'fa-heartbeat', 'Treatments','treatment');

@@ -1,0 +1,2 @@
+INSERT INTO %db_prefix%modules (module_name,module_display_name,module_description,module_status) VALUES ('gallery', 'Gallery','Compare before and after pictures of patient', '1');
+CREATE TABLE IF NOT EXISTS %db_prefix%visit_img (id int(11) NOT NULL AUTO_INCREMENT,visit_id int(11) NOT NULL,patient_id int(11) NOT NULL,visit_img_path varchar(255) NOT NULL,img_name varchar(11) NOT NULL,PRIMARY KEY (id));
